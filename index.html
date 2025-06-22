@@ -10,8 +10,6 @@
     :root {
       --bg-light: #f4f4f9;
       --text-light: #333;
-      --bg-dark: #111827;
-      --text-dark: #f4f4f9;
       --primary: #3b82f6;
     }
     * {
@@ -27,11 +25,6 @@
       line-height: 1.6;
       background: var(--bg-light);
       color: var(--text-light);
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
     }
     header {
       background: url('https://i.pinimg.com/originals/aa/dd/7e/aadd7e9b3bd757c82a475138365f4c09.jpg') center/cover no-repeat;
@@ -47,7 +40,7 @@
       background: rgba(0, 0, 0, 0.55);
       z-index: 0;
     }
-    header h1, header p, header nav, #toggle-dark, #toggle-lang {
+    header h1, header p, header nav {
       position: relative;
       z-index: 1;
     }
@@ -63,16 +56,6 @@
     }
     nav a:hover {
       color: #60a5fa;
-    }
-    #toggle-dark, #toggle-lang {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      margin: 1rem 0.5rem;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: 600;
     }
     section {
       padding: 2rem 1rem;
@@ -99,7 +82,7 @@
       background: #3b82f6;
     }
     footer {
-      background: var(--bg-dark);
+      background: #111827;
       color: white;
       text-align: center;
       padding: 1rem;
@@ -118,15 +101,11 @@
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div>
-      <button id="toggle-dark">Toggle Dark Mode</button>
-      <button id="toggle-lang">TR / EN</button>
-    </div>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p id="about-text">
+    <p>
       🍎👨‍💻 I’m a Senior iOS Developer with over 7 years of experience in banking, loyalty, and telecom apps. I specialize in Swift, SwiftUI, Combine, and MVVM architecture.
     </p>
   </section>
@@ -187,19 +166,5 @@
   <footer>
     <p>🍎👨‍💻 &copy; 2025 Serhan Khan. All rights reserved.</p>
   </footer>
-
-  <script>
-    document.getElementById("toggle-dark").onclick = function () {
-      document.body.classList.toggle("dark");
-    };
-
-    const aboutEn = "🍎👨‍💻 I’m a Senior iOS Developer with over 7 years of experience in banking, loyalty, and telecom apps. I specialize in Swift, SwiftUI, Combine, and MVVM architecture.";
-    const aboutTr = "🍎👨‍💻 7+ yıllık deneyime sahip bir iOS geliştiricisiyim. Bankacılık, sadakat ve telekom uygulamalarında uzmanım. Swift, SwiftUI, Combine ve MVVM mimarisi konusunda yetkinim.";
-    let lang = "en";
-    document.getElementById("toggle-lang").onclick = function () {
-      lang = lang === "en" ? "tr" : "en";
-      document.getElementById("about-text").innerText = lang === "en" ? aboutEn : aboutTr;
-    };
-  </script>
 </body>
 </html>
