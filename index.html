@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serhan Khan | iOS Developer Portfolio</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍎👨‍💻 Serhan Khan | iOS Developer Portfolio</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg-light: #f4f4f9;
+      --text-light: #333;
+      --bg-dark: #111827;
+      --text-dark: #f4f4f9;
+      --primary: #3b82f6;
+    }
     * {
       box-sizing: border-box;
       margin: 0;
@@ -18,18 +25,34 @@
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      background: #f4f4f9;
-      color: #333;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
     header {
-      background: #111827;
+      background: url('https://i.pinimg.com/originals/aa/dd/7e/aadd7e9b3bd757c82a475138365f4c09.jpg') center/cover no-repeat;
       color: white;
-      padding: 2rem 1rem;
+      padding: 4rem 1rem;
       text-align: center;
-      animation: fadeIn 1s ease-in;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+    header h1, header p, header nav, #toggle-dark, #toggle-lang {
+      position: relative;
+      z-index: 1;
     }
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
     nav a {
@@ -37,111 +60,116 @@
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
     }
     nav a:hover {
       color: #60a5fa;
+    }
+    #toggle-dark, #toggle-lang {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 600;
     }
     section {
       padding: 2rem 1rem;
       max-width: 800px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 0.3s;
     }
     h2 {
       margin-bottom: 1rem;
-      color: #111827;
-      border-bottom: 2px solid #3b82f6;
+      border-bottom: 2px solid var(--primary);
       display: inline-block;
     }
     ul li {
       margin-bottom: 1.2rem;
     }
-    a {
-      color: #3b82f6;
-      text-decoration: none;
-      transition: all 0.3s ease;
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 12px;
+      margin-top: 0.3rem;
     }
-    a:hover {
-      text-decoration: underline;
+    .progress {
+      height: 100%;
+      background: #3b82f6;
     }
     footer {
-      background: #111827;
+      background: var(--bg-dark);
       color: white;
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
-      animation: fadeIn 1s ease-in;
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Serhan Khan</h1>
-    <p>Senior iOS Developer | Mentor | Consultant</p>
+    <h1>🍎👨‍💻 Serhan Khan</h1>
+    <p>Senior iOS Developer | Consultant</p>
     <nav>
       <a href="#about">About</a>
-      <a href="#services">Services</a>
+      <a href="#proficiencies">Proficiencies</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div>
+      <button id="toggle-dark">Toggle Dark Mode</button>
+      <button id="toggle-lang">TR / EN</button>
+    </div>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>
-      I’m a Senior iOS Developer with over 7 years of experience creating high-performance mobile apps for banking, loyalty, and telecom industries. I specialize in Swift, SwiftUI, Combine, and MVVM architecture. I'm also a passionate mentor and contributor to the iOS community via Medium and YouTube.
+    <p id="about-text">
+      🍎👨‍💻 I’m a Senior iOS Developer with over 7 years of experience in banking, loyalty, and telecom apps. I specialize in Swift, SwiftUI, Combine, and MVVM architecture.
     </p>
   </section>
 
-  <section id="services">
-    <h2>Services</h2>
+  <section id="proficiencies">
+    <h2>Proficiencies</h2>
     <ul>
-      <li><strong>iOS App Development:</strong> Swift, SwiftUI, Combine, MVVM, CI/CD setup</li>
-      <li><strong>Mentoring:</strong> Career coaching, mock interviews, code reviews</li>
-      <li><strong>Consulting:</strong> Architecture planning, MVP strategy, team mentoring</li>
+      <li><strong>MVVM-C Architecture:</strong> Modular and scalable codebases with Coordinators</li>
+      <li><strong>RxSwift:</strong> Reactive programming with advanced usage in networking, binding, and error handling</li>
+      <li><strong>Combine:</strong> Modern declarative patterns for handling asynchronous data</li>
+      <li><strong>Swift Concurrency:</strong> Proficient with async/await, TaskGroup, and structured concurrency</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Swift
+        <div class="progress-bar"><div class="progress" style="width: 95%"></div></div>
+      </li>
+      <li>SwiftUI
+        <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+      </li>
+      <li>RxSwift
+        <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+      </li>
+      <li>Combine
+        <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+      </li>
+      <li>Concurrency
+        <div class="progress-bar"><div class="progress" style="width: 88%"></div></div>
+      </li>
     </ul>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <ul>
-      <li>
-        <strong><a href="https://apps.apple.com/us/app/optima-mobile/id1570428414" target="_blank">Optima Bank</a></strong><br>
-        iOS banking app using MVVM & Combine. Created scalable structure and contributed to production features.
-      </li>
-      <li>
-        <strong><a href="https://apps.apple.com/cy/app/my-vodafone-kktc/id1119142831?l=tr" target="_blank">My Vodafone App</a></strong><br>
-        Developed for Cyprus Vodafone users. Users can check balances, pay bills, and manage their plans.
-      </li>
-      <li>
-        <strong><a href="https://apps.apple.com/cy/app/local-pay/id1328860932?l=tr" target="_blank">LocalPay</a></strong><br>
-        First digital payment app in Northern Cyprus, allowing users to pay bills from their smartphones.
-      </li>
-      <li>
-        <strong> <a href="https://apps.apple.com/at/app/j%C3%B6-bonus-club/id1456364903">Jö Loyalty App (Rewe International AG)</a></strong><br>
-        Improved Austria’s most-used loyalty app (2M+ users). Enhanced UI, integrated SwiftUI and CI/CD, raised rating from 3.6 to 4.8.
-      </li>
-      <li>
-        <strong><a href="https://apps.apple.com/app/cypguide/id6501748877" target="_blank">CypGuide</a></strong><br>
-        A personal side project showcasing villages in Cyprus. Built with Swift & Firestore backend. Live on App Store.
-      </li>
+      <li><strong><a href="https://apps.apple.com/us/app/optima-mobile/id1570428414" target="_blank">Optima Bank</a></strong> – Banking app with Combine & MVVM</li>
+      <li><strong><a href="https://apps.apple.com/cy/app/my-vodafone-kktc/id1119142831?l=tr" target="_blank">My Vodafone App</a></strong> – Manage plans, bills, usage</li>
+      <li><strong><a href="https://apps.apple.com/cy/app/local-pay/id1328860932?l=tr" target="_blank">LocalPay</a></strong> – First mobile payment app in North Cyprus</li>
+      <li><strong><a href="https://apps.apple.com/at/app/j%C3%B6-bonus-club/id1456364903" target="_blank">Jö Loyalty App</a></strong> – Enhanced UI, CI/CD, SwiftUI, 2M+ users</li>
+      <li><strong><a href="https://apps.apple.com/app/cypguide/id6501748877" target="_blank">CypGuide</a></strong> – My side project for Cyprus village history</li>
     </ul>
   </section>
 
@@ -157,7 +185,21 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Serhan Khan. All rights reserved.</p>
+    <p>🍎👨‍💻 &copy; 2025 Serhan Khan. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.getElementById("toggle-dark").onclick = function () {
+      document.body.classList.toggle("dark");
+    };
+
+    const aboutEn = "🍎👨‍💻 I’m a Senior iOS Developer with over 7 years of experience in banking, loyalty, and telecom apps. I specialize in Swift, SwiftUI, Combine, and MVVM architecture.";
+    const aboutTr = "🍎👨‍💻 7+ yıllık deneyime sahip bir iOS geliştiricisiyim. Bankacılık, sadakat ve telekom uygulamalarında uzmanım. Swift, SwiftUI, Combine ve MVVM mimarisi konusunda yetkinim.";
+    let lang = "en";
+    document.getElementById("toggle-lang").onclick = function () {
+      lang = lang === "en" ? "tr" : "en";
+      document.getElementById("about-text").innerText = lang === "en" ? aboutEn : aboutTr;
+    };
+  </script>
 </body>
 </html>
